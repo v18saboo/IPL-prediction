@@ -1,0 +1,12 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="ColorPrimary">#ff4cacff</color>
+    <color name="ColorPrimaryDark">#ff3f7dc3</color>
+    <color name="tabsScrollColor">#ffffffff</color>
+    <color name="teamSelect">#ff51ccff</color>
+    <color name="Orange">#ffff8910</color>
+    <color name="LightOrange">#ffffe146</color>  
+    <color name="Spinnerbg">#ffa2c3ff</color> 
+
+</resources>

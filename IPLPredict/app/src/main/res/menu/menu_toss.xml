@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.saboo.iplpredict.TossActivity">
+
+        <item android:id="@+id/nextpage"
+            android:icon="@drawable/rightarrow"
+            android:title="Next"
+            app:showAsAction="ifRoom"  />
+
+</menu>

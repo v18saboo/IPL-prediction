@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
+    android:background="@android:color/transparent"
+    android:elevation="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Date"
+        android:id="@+id/date"
+        android:textColor="@color/primary_text_default_material_dark"
+        android:background="@color/ColorPrimary"
+        android:elegantTextHeight="true"
+        android:gravity="end"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp"
+        android:textAlignment="gravity"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:elevation="10dp"
+        android:layout_weight="0.04" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#72FFFFFF"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="italic"
+            android:elegantTextHeight="true"
+            android:text="Match No."
+            android:paddingTop="8dp"
+            android:textSize="17sp"
+            android:paddingLeft="15dp"
+            android:textAlignment="gravity"
+            android:textColor="#90000000"
+            android:id="@+id/match_no"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Kolkata Knight Riders"
+            android:textColor="#ff000000"
+            android:id="@+id/team1"
+            android:textAlignment="gravity"
+            android:layout_below="@+id/match_no"
+            android:gravity="center"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="vs"
+            android:gravity="center"
+            android:textColor="#ff000000"
+            android:id="@+id/vs"
+            android:layout_below="@+id/team1"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Royal Challengers Bangalore"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:textColor="#ff000000"
+            android:paddingBottom="10dp"
+            android:id="@+id/team2"
+            android:layout_below="@+id/vs"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Predict It!"
+            android:id="@+id/predict"
+            android:fadingEdge="horizontal"
+            android:elevation="10dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp"
+            android:textColor="@color/primary_text_default_material_dark"
+            android:background="@color/ColorPrimary"
+            android:layout_below="@+id/team2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+</LinearLayout>

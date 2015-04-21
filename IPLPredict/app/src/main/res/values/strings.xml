@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">IPLPredict</string>
+
+    <string name="dummy_button">Proceed</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="hometeamprompt">Home Team</string>
+    <string name="awayteamprompt">Away Team</string>
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string-array name="teamname_array">
+        <item>Chennai Super Kings</item>
+        <item>Delhi Daredevils</item>
+        <item>Kings XI Punjab</item>
+        <item>Kolkata Knight Riders</item>
+        <item>Mumbai Indians</item>
+        <item>Rajasthan Royals</item>
+        <item>Royal Challengers Bangalore</item>
+        <item>Sunrisers Hyderabad</item>
+    </string-array>
+    <string name="title_activity_toss">TossActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+</resources>
