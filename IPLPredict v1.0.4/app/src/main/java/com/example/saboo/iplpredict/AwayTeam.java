@@ -31,48 +31,31 @@ import java.util.ArrayList;
 /**
  * Created by hp1 on 21-01-2015.
  */
-public class HomeTeam extends Fragment {
-    String name="";
-    public HomeTeam(){}
+public class AwayTeam extends Fragment {
 
     ArrayList<ListItem> listitem = new ArrayList<ListItem>();
     public ArrayList<String> order=new ArrayList<String>();
+    ArrayList<String> nationality= new ArrayList<String>();
     ListAdapter boxAdapter;
+    String name="";
+    public AwayTeam(){}
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =inflater.inflate(R.layout.teamchoosing,container,false);
         Bundle bundle = getArguments();
         name = bundle.getString("name");
         fillData();
-        boxAdapter = new ListAdapter(getActivity(), listitem);
-        ListView lvMain = (ListView) v.findViewById(R.id.list);
+        boxAdapter = new ListAdapter(getActivity(), listitem,nationality);
+        final ListView lvMain = (ListView) v.findViewById(R.id.list);
         lvMain.setAdapter(boxAdapter);
-        //lvMain.setClickable(true);
-        lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-/* ERROR IS HERE!!!!!!!!! BECAUSE VIEW IS REUSED IN ANDROID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
+        lvMain.setClickable(true);
 
-                CheckBox cb= (CheckBox)arg1.findViewById(R.id.checkBox);
-                String str=listitem.get(arg2).name;
-                if(cb.isChecked()) {
-                    order.remove(str);
-                }
-                else order.add(str);
-                cb.setChecked(!cb.isChecked());
-                //Toast.makeText(getActivity(),"Clicked " + str,Toast.LENGTH_LONG).show();
-            }
-
-        });
-        showOrder(v);
-        Log.e("done123","fuff");
         return v;
-}
+    }
+
 
 
     void fillData() {
-
 
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -84,7 +67,7 @@ public class HomeTeam extends Fragment {
 
             @Override
             public void onStart() {
-                Log.e("STARTED","DAWG");
+                Log.e("STARTED", "DAWG");
                 // called before request is started
             }
 
@@ -96,7 +79,9 @@ public class HomeTeam extends Fragment {
                     for(int i=0;i<array.length();++i) {
                         JSONObject object = array.getJSONObject(i);
                         String s = object.getString("Name");
+                        String n = object.getString("Nationality");
                         listitem.add(new ListItem(s, false));
+                        nationality.add(n);
                         Log.e("ADDED",s);
                     }
                     boxAdapter.notifyDataSetChanged();
@@ -120,26 +105,6 @@ public class HomeTeam extends Fragment {
         });
 
     }
-    public void showResult(View v) {
-        String result = "Selected Product are :";
-        int totalAmount=0;
-        for (ListItem p : boxAdapter.getBox()) {
-            if (p.cbox){
-                result += "\n" + p.name;
-                }
-        }
-        Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
-    }
-    public void showOrder(View v)
-    {
-        String result=""; int i=1;
-        for(String name : boxAdapter.getOrder()){
-            result += "\n" + i + name;
-            i++;
-        }
-        Log.e("finished","fdbf");
-        //Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
 
-    }
 
 }

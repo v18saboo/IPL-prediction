@@ -1,10 +1,12 @@
 package com.example.saboo.iplpredict;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class ScheduleListAdapter extends BaseAdapter {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.schedulelistitem, null);
@@ -49,11 +51,21 @@ public class ScheduleListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
+        Button predict=(Button)convertView.findViewById(R.id.predict);
         holder.team1.setText(schedule.get(position).team1);
         holder.team2.setText(schedule.get(position).team2);
         holder.match_no.setText("Match " + schedule.get(position).match_no);
         holder.date.setText(schedule.get(position).date);
+        final String[] t={holder.team1.getText().toString(),holder.team2.getText().toString()};
+        predict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(parent.getContext(),PredictingActivity.class);
+
+                i.putExtra("teams",t);
+                parent.getContext().startActivity(i);
+            }
+        });
 
         return convertView;
     }

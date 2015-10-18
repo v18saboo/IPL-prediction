@@ -21,10 +21,13 @@ public class ListAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<ListItem> objects;
-    ArrayList<String> order=new ArrayList<String>();
-    ListAdapter(Context context, ArrayList<ListItem> names) {
+    int foreigncount=0; int num=0;
+    ArrayList<String> box=new ArrayList<String>();
+    ArrayList<String> nation=new ArrayList<String>();
+    ListAdapter(Context context, ArrayList<ListItem> names, ArrayList<String> nationality) {
         ctx = context;
         objects = names;
+        nation=nationality;
         lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -58,10 +61,11 @@ public class ListAdapter extends BaseAdapter {
         //((ImageView) view.findViewById(R.id.ivImage)).setImageResource(p.image);
 
         CheckBox cbBuy = (CheckBox) view.findViewById(R.id.checkBox);
-
-        //cbBuy.setOnCheckedChangeListener(myCheckChangeList);
-        //cbBuy.setTag(position);
-        //cbBuy.setChecked(p.cbox);
+        cbBuy.setFocusable(false);
+        cbBuy.setFocusableInTouchMode(false);
+        cbBuy.setOnCheckedChangeListener(myCheckChangeList);
+        cbBuy.setTag(position);
+        cbBuy.setChecked(p.cbox);
 
         return view;
     }
@@ -72,17 +76,25 @@ public class ListAdapter extends BaseAdapter {
 
     /*Checks which list items are checked and adds them into a list.*/
 
-    ArrayList<ListItem> getBox() {
-        ArrayList<ListItem> box = new ArrayList<ListItem>();
-        for (ListItem p : objects) {
+    ArrayList<String> getBox() {
+       box = new ArrayList<String>(); int i=0;
+        for (ListItem p : objects ) {
+
             if (p.cbox)
-                box.add(p);
+            {
+                num++;
+                box.add(p.name);
+                if(!nation.get(i).equals("IND"))
+                {
+                    foreigncount++;
+                }
+
+            }
+            i=i+1;
         }
         return box;
     }
-    ArrayList<String> getOrder() {
-        return order;
-    }
+
 
     OnCheckedChangeListener myCheckChangeList = new OnCheckedChangeListener() {
         public void onCheckedChanged(CompoundButton buttonView,

@@ -34,7 +34,7 @@ public class Mainclass {
 		int i=0;
 		for(i=0;i<6;i++)
 			averages[i]=in.nextDouble();
-		System.out.println("Enter the Strike RAtes");
+		System.out.println("Enter the Strike Rates");
 		for(i=0;i<6;i++)
 			strikeRates[i]=in.nextDouble();
 		System.out.println("Enter the economy");

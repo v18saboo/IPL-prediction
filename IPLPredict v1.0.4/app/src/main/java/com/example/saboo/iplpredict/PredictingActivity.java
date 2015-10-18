@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBarActivity;
@@ -51,11 +52,31 @@ public class PredictingActivity extends ActionBarActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         // Handle menu item click event
-                        ArrayList<String> homeplayers= adapter.home.order;
-                        Toast.makeText(getApplicationContext(),homeplayers.toString(),Toast.LENGTH_SHORT).show();
-                        //Intent i=new Intent(PredictingActivity.this,TossActivity.class);
-                        //i.putExtra("teams",Titles);
-                        //startActivity(i);
+                        ArrayList<String> homeplayers = adapter.home.boxAdapter.getBox();
+                        int fcounthome = adapter.home.boxAdapter.foreigncount;
+                        int totalhome = adapter.home.boxAdapter.num;
+                        //Toast.makeText(getApplicationContext(),homeplayers.toString(),Toast.LENGTH_LONG).show();
+                        ArrayList<String> awayplayers = adapter.away.boxAdapter.getBox();
+                        int fcountaway = adapter.away.boxAdapter.foreigncount;
+                        int totalaway = adapter.away.boxAdapter.num;
+
+                        if(fcounthome >4 || fcountaway>4) {
+                            String s=fcounthome+"";
+                            Log.e("Foreign player home",s);
+                            s="";
+                             s=fcountaway+"";
+                            Log.e("Foreign player away",s);
+                            Toast.makeText(getApplicationContext(), "Only 4 foreign players allowed!", Toast.LENGTH_LONG).show();
+                        }
+                        else if(totalhome!=11 || totalaway!=11)
+                            Toast.makeText(getApplicationContext(),"Choose only 11 players",Toast.LENGTH_LONG).show();
+                        else {
+                        Intent i = new Intent(PredictingActivity.this, TossActivity.class);
+                        i.putExtra("team1", homeplayers);
+                        i.putExtra("team2", awayplayers);
+                        i.putExtra("teamnames", Titles);
+                        startActivity(i);
+                    }
                         return true;
                     }
                 });
